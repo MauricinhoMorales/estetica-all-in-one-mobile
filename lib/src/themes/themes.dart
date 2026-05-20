@@ -15,11 +15,11 @@ class AppThemes {
           fontWeight: FontWeight.bold,
         ),
       ),
-      bottomAppBarTheme: BottomAppBarTheme(
+      bottomAppBarTheme: BottomAppBarThemeData(
         height: screenHeight * 0.08,
         color: Colors.blue[50],
       ),
-      tabBarTheme: const TabBarTheme(
+      tabBarTheme: const TabBarThemeData(
         labelColor: Colors.blue,
         unselectedLabelColor: Colors.black54,
         indicator: BoxDecoration(
@@ -56,11 +56,11 @@ class AppThemes {
           fontWeight: FontWeight.bold,
         ),
       ),
-      bottomAppBarTheme: BottomAppBarTheme(
+      bottomAppBarTheme: BottomAppBarThemeData(
         height: screenHeight * 0.08,
         color: Colors.grey[800],
       ),
-      tabBarTheme: const TabBarTheme(
+      tabBarTheme: const TabBarThemeData(
         labelColor: Colors.red,
         unselectedLabelColor: Colors.grey,
         indicator: BoxDecoration(
