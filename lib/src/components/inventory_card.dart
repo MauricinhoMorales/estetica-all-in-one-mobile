@@ -143,6 +143,8 @@ class _InventoryCardState extends State<InventoryCard> {
           File(widget.item.photoPath!),
           width: 44,
           height: 44,
+          cacheWidth: 132,
+          cacheHeight: 132,
           fit: BoxFit.cover,
           errorBuilder: (_, __, ___) => _placeholder(),
         ),

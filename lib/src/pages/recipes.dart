@@ -218,7 +218,8 @@ class _RecipesPageState extends State<RecipesPage> with AutomaticKeepAliveClient
                                   leading: CircleAvatar(
                                     backgroundImage: photo != null &&
                                             File(photo).existsSync()
-                                        ? FileImage(File(photo))
+                                        ? ResizeImage(FileImage(File(photo)),
+                                            width: 100, height: 100)
                                         : null,
                                     child: photo == null ||
                                             !File(photo).existsSync()

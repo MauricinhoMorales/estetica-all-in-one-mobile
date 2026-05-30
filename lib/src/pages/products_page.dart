@@ -14,12 +14,15 @@ class ProductsPage extends StatefulWidget {
   State<ProductsPage> createState() => _ProductsPageState();
 }
 
-class _ProductsPageState extends State<ProductsPage> {
+class _ProductsPageState extends State<ProductsPage> with AutomaticKeepAliveClientMixin {
   final _db = DatabaseHelper();
   final _searchCtrl = TextEditingController();
 
   List<Product> _all = [];
   List<Product> _filtered = [];
+
+  @override
+  bool get wantKeepAlive => true;
 
   @override
   void initState() {
@@ -121,6 +124,7 @@ class _ProductsPageState extends State<ProductsPage> {
 
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     return Scaffold(
       appBar: AppBar(
         title: const Text('Products'),

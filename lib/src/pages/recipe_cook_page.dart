@@ -168,6 +168,7 @@ class _RecipeCookPageState extends State<RecipeCookPage> {
                     File(_coverPhoto!),
                     height: 220,
                     width: double.infinity,
+                    cacheHeight: 660,
                     fit: BoxFit.cover,
                   )
                 : Container(
@@ -227,7 +228,8 @@ class _RecipeCookPageState extends State<RecipeCookPage> {
                       return ListTile(
                         leading: CircleAvatar(
                           backgroundImage: hasIngPhoto
-                              ? FileImage(File(photo))
+                              ? ResizeImage(FileImage(File(photo)),
+                                  width: 100, height: 100)
                               : null,
                           child: hasIngPhoto
                               ? null

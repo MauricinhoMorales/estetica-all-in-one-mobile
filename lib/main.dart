@@ -4,6 +4,8 @@ import 'src/components/navigator.dart';
 import 'src/themes/themes.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  PaintingBinding.instance.imageCache.maximumSizeBytes = 200 << 20; // 200 MB
   runApp(const MyApp());
 }
 
