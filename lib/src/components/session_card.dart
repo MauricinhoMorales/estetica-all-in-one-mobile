@@ -1,45 +1,33 @@
-import 'package:app/src/pages/session_items.dart';
 import 'package:flutter/material.dart';
+import '../pages/registry_session_detail_page.dart';
 
-class ShoppingSessionCard extends StatefulWidget {
-  final String place;
+class ShoppingSessionCard extends StatelessWidget {
+  final String? place;
   final String date;
   final int sessionId;
   final void Function() onDeleteItem;
 
   const ShoppingSessionCard({
     super.key,
-    required this.place,
+    this.place,
     required this.date,
     required this.sessionId,
     required this.onDeleteItem,
   });
 
   @override
-  _ShoppingSessionCardState createState() => _ShoppingSessionCardState();
-}
-
-class _ShoppingSessionCardState extends State<ShoppingSessionCard> {
-  @override
-  void initState() {
-    super.initState();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return Dismissible(
-      key: ValueKey('edit-${widget.sessionId}'),
+      key: ValueKey('session-$sessionId'),
       direction: DismissDirection.horizontal,
       confirmDismiss: (direction) async {
         if (direction == DismissDirection.endToStart) {
-          widget.onDeleteItem();
+          onDeleteItem();
         } else if (direction == DismissDirection.startToEnd) {
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => SessionItemsPage(
-                sessionId: widget.sessionId,
-              ),
+              builder: (_) => RegistrySessionDetailPage(sessionId: sessionId),
             ),
           );
         }
@@ -49,45 +37,38 @@ class _ShoppingSessionCardState extends State<ShoppingSessionCard> {
         color: Colors.grey,
         alignment: Alignment.centerLeft,
         padding: const EdgeInsets.symmetric(horizontal: 20),
-        child: const Text("CHECK"),
+        child: const Text('VIEW'),
       ),
       secondaryBackground: Container(
-          color: Colors.red,
-          alignment: Alignment.centerRight,
-          padding: const EdgeInsets.symmetric(horizontal: 20),
-          child: const Text("REMOVE")),
+        color: Colors.red,
+        alignment: Alignment.centerRight,
+        padding: const EdgeInsets.symmetric(horizontal: 20),
+        child: const Text('DELETE'),
+      ),
       child: Container(
-        constraints: const BoxConstraints(minHeight: 90),
+        constraints: const BoxConstraints(minHeight: 72),
         child: Card(
-          margin: const EdgeInsets.all(8.0),
-          elevation: 4.0,
+          margin: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
           child: Padding(
-            padding: const EdgeInsets.all(12.0),
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
             child: Row(
               children: [
-                Expanded(
-                  flex: 1,
-                  child: Text(
-                    widget.place,
-                    textAlign: TextAlign.center,
-                    style: const TextStyle(
-                      fontSize: 16.0,
-                      fontWeight: FontWeight.bold,
+                if (place != null)
+                  Expanded(
+                    child: Text(
+                      place!,
+                      style: const TextStyle(fontWeight: FontWeight.bold),
                     ),
                   ),
-                ),
-                const Spacer(),
                 Expanded(
                   flex: 3,
                   child: Text(
-                    widget.date,
-                    textAlign: TextAlign.center,
-                    style: const TextStyle(
-                      fontSize: 16.0,
-                      fontWeight: FontWeight.normal,
-                    ),
+                    date,
+                    textAlign: TextAlign.end,
+                    style: const TextStyle(color: Colors.grey),
                   ),
                 ),
+                const Icon(Icons.chevron_right, color: Colors.grey),
               ],
             ),
           ),

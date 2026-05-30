@@ -1,10 +1,9 @@
-// import 'package:app/src/pages/recipes.dart';
-import 'package:app/src/pages/shopping.dart';
-// import 'package:app/src/pages/storage.dart';
-import 'package:app/src/pages/user.dart';
 import 'package:flutter/material.dart';
-
+import '../pages/inventory_page.dart';
+import '../pages/shopping_list_page.dart';
+import '../pages/recipes.dart';
 import '../pages/registry.dart';
+import '../pages/products_page.dart';
 
 class Navigation extends StatelessWidget {
   final VoidCallback toggleTheme;
@@ -14,26 +13,26 @@ class Navigation extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      length: 3, // Update this value if changing number of tabs
+      length: 5,
       child: Scaffold(
         body: TabBarView(
           children: [
-            const ShoppingPage(),
+            const InventoryPage(),
+            const ShoppingListPage(),
+            const RecipesPage(),
             const RegistryPage(),
-            // const StoragePage(),
-            // const RecipesPage(),
-            UserPage(toggleTheme: toggleTheme), // Pass toggleTheme here
+            ProductsPage(toggleTheme: toggleTheme),
           ],
         ),
         bottomNavigationBar: const BottomAppBar(
           padding: EdgeInsets.zero,
           child: TabBar(
             tabs: [
-              Tab(icon: Icon(Icons.shopping_bag)),
-              Tab(icon: Icon(Icons.list)),
-              // Tab(icon: Icon(Icons.store_outlined)),
-              // Tab(icon: Icon(Icons.receipt_long_rounded)),
-              Tab(icon: Icon(Icons.person)),
+              Tab(icon: Icon(Icons.inventory_2_outlined), text: 'Inventory'),
+              Tab(icon: Icon(Icons.shopping_cart_outlined), text: 'Shopping'),
+              Tab(icon: Icon(Icons.receipt_long_rounded), text: 'Recipes'),
+              Tab(icon: Icon(Icons.history), text: 'Registry'),
+              Tab(icon: Icon(Icons.storefront_outlined), text: 'Products'),
             ],
           ),
         ),
