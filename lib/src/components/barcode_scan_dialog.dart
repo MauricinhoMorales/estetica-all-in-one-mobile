@@ -63,11 +63,11 @@ class _BarcodeScanDialogState extends State<BarcodeScanDialog> {
               ),
             ),
           ),
-          const Positioned(
-            bottom: 40,
+          Positioned(
+            bottom: MediaQuery.of(context).padding.bottom + 24,
             left: 0,
             right: 0,
-            child: Text(
+            child: const Text(
               'Point camera at barcode',
               textAlign: TextAlign.center,
               style: TextStyle(color: Colors.white, fontSize: 16),
